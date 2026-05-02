@@ -14,5 +14,4 @@ $model = new Model("users");
 // $result = $model->select()->where("role", 'user')->get();
 // $result = $model->where("name", "edited")->edit(["name"=>"silvaleal", "role"=>'default']);
 
-
 // $model->insert($data);

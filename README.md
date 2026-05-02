@@ -1,9 +1,10 @@
 # 🐘 RotyPHP
 
-[![PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 
 **RotyPHP** é um micro-ORM e Query Builder minimalista, simples e eficiente, construído em PHP para facilitar as interações com bancos de dados SQLite usando PDO. O foco é fornecer uma sintaxe limpa e fluente, abstraindo queries SQL para operações rotineiras.
+
+> ⚠️ **Aviso:** Este projeto ainda está em fase de desenvolvimento (ver *To-Do List*). Não é recomendado para uso em produção crítica no momento.
 
 ---
 
@@ -24,52 +25,9 @@
 
 ---
 
-## 💡 Exemplos de Uso
+## 💡 Exemplos
 
-Abaixo estão os cenários mais comuns de uso do ORM.
-
-### Inicializando um Modelo
-Instancie o modelo passando o nome da tabela que deseja manipular.
-
-```php
-require __DIR__."/vendor/autoload.php";
-
-use Src\Model;
-
-// Conecta-se à tabela 'users'
-$model = new Model("users");
-```
-
-### Inserindo Dados
-Use o método `create` com um array associativo para inserir registros.
-
-```php
-$data = [
-    "name" => "João Silva",
-    "role" => "admin"
-];
-
-if ($model->create($data)) {
-    echo "Usuário criado com sucesso!";
-}
-```
-
-### Consultando Dados
-Encadeie métodos de forma fluente para buscar registros.
-
-**Buscando vários registros (`get`):**
-```php
-$admins = $model->select('name, email')
-                ->where('role', 'admin')
-                ->get();
-```
-
-**Buscando um único registro (`first`):**
-```php
-$user = $model->select()
-              ->where('email', 'contato@silvaleal.dev')
-              ->first();
-```
+Leia a nossa documentação em [/doc](/doc/).
 
 ---
 
