@@ -1,7 +1,7 @@
 {
     "name": "silvaleal/rotyphp",
     "description": "Micro-ORM e Query Builder minimalista, simples e eficiente, construído em PHP para facilitar as interações com bancos de dados SQLite usando PDO.",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "autoload": {
         "psr-4": {
             "RotyPHP\\": "src/"
