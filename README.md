@@ -6,13 +6,36 @@
 
 ## Instalação
 
-   ```bash
-   git clone https://github.com/silvaleal/rotyphp.git
-   cd rotyphp
-   composer install
-   ```
+```bash
+composer require silvaleal/rotyphp
+```
 
-## Exemplos
+## Configuração
+
+Antes de utilizar o RotyPHP para consultar o banco de dados, você precisa configurar o caminho para o seu arquivo SQLite. Utilize o método `setConnector` da classe `Database` logo no início da sua aplicação:
+
+```php
+<?php 
+
+require 'vendor/autoload.php';
+
+use RotyPHP\Database;
+use RotyPHP\Model;
+
+// Configure o caminho absoluto ou relativo para o arquivo do banco de dados SQLite
+Database::setConnector(__DIR__ . '/database.db');
+
+// Instancie o Model passando o nome da tabela
+$user = new Model('users');
+
+// Realize suas consultas
+$user->select();
+$resultados = $user->get();
+
+print_r($resultados);
+```
+
+## Documentação
 
 Leia a nossa documentação em [/doc](/doc/).
 

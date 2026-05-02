@@ -1,32 +1,37 @@
 <?php
 
-namespace Src;
+namespace RotyPHP;
 
 class QueryBuilder
 {
-    protected string $query;
-    protected string $type; # insert, select, update, delete...
-    protected array $data;
-    protected array $wheres;
-    protected ?int $limit;
-    protected string $table;
+    protected string $query = '';
+    protected string $type = '';
+    protected array $data = [];
+    protected array $wheres = [];
+    protected ?int $limit = null;
+    protected string $table = '';
     protected string $columns = '*';
 
     public function builder()
     {
-        $result = "";
-        $result .= $this->query;
-
-        if (!empty($this->wheres)) {
-            // TODO: verificar se é string ou número
-            $wheres = [];
-            foreach ($this->wheres as $key => $value) {
-                $wheres[] = "{$key} = '{$value}'";
-            }
-            $result .= ' WHERE ' . implode(' AND ', $wheres);
+        if ($this->query === '') {
+            return '';
         }
 
-        $this->query = $result;
+        if (!empty($this->wheres)) {
+            $wheres = [];
+            foreach ($this->wheres as $key => $value) {
+                $quoted = is_numeric($value) ? $value : "'" . addslashes((string)$value) . "'";
+                $wheres[] = "{$key} = {$quoted}";
+            }
+
+            if (stripos($this->query, ' WHERE ') === false) {
+                $this->query .= ' WHERE ' . implode(' AND ', $wheres);
+            } else {
+                $this->query .= ' AND ' . implode(' AND ', $wheres);
+            }
+        }
+
         return $this->query;
     }
 
