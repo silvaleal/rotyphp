@@ -13,5 +13,7 @@ $model = new Model("users");
 // $result = $model->create($data);
 // $result = $model->select()->where("role", 'user')->get();
 // $result = $model->where("name", "edited")->edit(["name"=>"silvaleal", "role"=>'default']);
+// $result = $model->delete(["name"=>"client"]);
+// print_r($result);
 
 // $model->insert($data);

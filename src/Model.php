@@ -33,6 +33,16 @@ class Model extends QueryBuilder {
 
         return $result;
     }
+    
+    public function delete(array $data) { // TODO: criar para name = :name
+        $this->del($data);
+        $this->builder();
+
+        $stmt = $this->pdo->prepare($this->query);
+        $result = $stmt->execute($this->data["deletories"]);
+
+        return $result;
+    }
 
     public function get()
     {
