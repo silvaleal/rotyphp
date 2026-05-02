@@ -1,35 +1,92 @@
-# RotyPHP
+# 🐘 RotyPHP
 
-Um micro-ORM e Query Builder simples construído em PHP com PDO para banco de dados SQLite.
+[![PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## Documentação
+**RotyPHP** é um micro-ORM e Query Builder minimalista, simples e eficiente, construído em PHP para facilitar as interações com bancos de dados SQLite usando PDO. O foco é fornecer uma sintaxe limpa e fluente, abstraindo queries SQL para operações rotineiras.
 
-A documentação completa do projeto e exemplos de uso podem ser encontrados na pasta [doc/orm.md](doc/orm.md).
+---
 
-## To-Do List (Tarefas Futuras)
+## 🚀 Instalação
 
-Abaixo está uma lista de melhorias sugeridas e próximos passos para o projeto:
+1. Clone o repositório para o seu ambiente:
+   ```bash
+   git clone https://github.com/silvaleal/rotyphp.git
+   cd rotyphp
+   ```
 
-### Banco de Dados e Query Builder
+2. Gere o autoload do Composer para carregar as classes via PSR-4:
+   ```bash
+   composer dump-autoload
+   ```
+
+3. Pronto! O banco de dados SQLite (`database.db`) será utilizado ou gerado automaticamente na raiz do projeto na primeira interação.
+
+---
+
+## 💡 Exemplos de Uso
+
+Abaixo estão os cenários mais comuns de uso do ORM.
+
+### Inicializando um Modelo
+Instancie o modelo passando o nome da tabela que deseja manipular.
+
+```php
+require __DIR__."/vendor/autoload.php";
+
+use Src\Model;
+
+// Conecta-se à tabela 'users'
+$model = new Model("users");
+```
+
+### Inserindo Dados
+Use o método `create` com um array associativo para inserir registros.
+
+```php
+$data = [
+    "name" => "João Silva",
+    "role" => "admin"
+];
+
+if ($model->create($data)) {
+    echo "Usuário criado com sucesso!";
+}
+```
+
+### Consultando Dados
+Encadeie métodos de forma fluente para buscar registros.
+
+**Buscando vários registros (`get`):**
+```php
+$admins = $model->select('name, email')
+                ->where('role', 'admin')
+                ->get();
+```
+
+**Buscando um único registro (`first`):**
+```php
+$user = $model->select()
+              ->where('email', 'contato@silvaleal.dev')
+              ->first();
+```
+
+---
+
+## 📝 To-Do List (Tarefas Futuras)
+
 - [x] Conexão com SQLite via PDO
-- [x] Implementar método `select()`
-- [x] Implementar método `insert()`
-- [x] Implementar cláusula `where()` (igualdade)
-- [x] Implementar método `get()` para buscar múltiplos resultados
-- [x] Implementar método `first()` para buscar o primeiro resultado
-- [ ] Implementar método `update()` para atualizar registros
-- [ ] Implementar método `delete()` para remover registros
-- [ ] Melhorar o método `where()` para suportar outros operadores (>, <, LIKE, IN, etc.)
-- [ ] Implementar método `limit()`
-- [ ] Implementar método `orderBy()`
-- [ ] Adicionar suporte a relacionamentos (`hasOne`, `hasMany`, etc.)
-- [ ] Suporte a outros bancos de dados (MySQL, PostgreSQL) via variável de ambiente
+- [x] Método `select()`
+- [x] Método `insert()` e `create()`
+- [x] Cláusula `where()` básica
+- [x] Retorno com `get()` e `first()`
+- [x] Implementar método `update()`
+- [ ] Implementar método `delete()`
+- [ ] Melhorar `where()` (suporte a `>`, `<`, `LIKE`, etc.)
+- [ ] Implementar suporte a `limit()` e `orderBy()`
+- [ ] Tratamento avançado de exceções
+- [ ] Adicionar suporte ao Dotenv para configurações do DB
 
-### Arquitetura e Padrões
-- [ ] Implementar validação de tipos de dados nos valores do `where` (atualmente tudo é tratado como string com aspas simples)
-- [ ] Tratar exceções de banco de dados de forma mais elegante
-- [ ] Implementar *Migrations* para criação de tabelas automáticas
-- [ ] Substituir banco local por variáveis de ambiente (Dotenv) para credenciais do banco
+---
 
-### Outros
-- [ ] Publicar pacote no Packagist
+**Desenvolvido por:** [silvaleal](https://silvaleal.dev)

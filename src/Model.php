@@ -24,6 +24,16 @@ class Model extends QueryBuilder {
         return $result;
     }
 
+    public function edit(array $data) {
+        $this->update($data);
+        $this->builder();
+
+        $stmt = $this->pdo->prepare($this->query);
+        $result = $stmt->execute($this->data["updaters"]);
+
+        return $result;
+    }
+
     public function get()
     {
         $this->builder();

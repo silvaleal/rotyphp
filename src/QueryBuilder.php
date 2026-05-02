@@ -17,13 +17,14 @@ class QueryBuilder
         $result = "";
         $result .= $this->query;
 
-        $wheres = [];
-        // TODO: verificar se é string ou número
-        foreach ($this->wheres as $key => $value) {
-            $wheres[] = "{$key} = '{$value}'";
+        if (!empty($this->wheres)) {
+            // TODO: verificar se é string ou número
+            $wheres = [];
+            foreach ($this->wheres as $key => $value) {
+                $wheres[] = "{$key} = '{$value}'";
+            }
+            $result .= ' WHERE ' . implode(' AND ', $wheres);
         }
-
-        $result .= ' WHERE '.implode(' AND ', $wheres);
 
         $this->query = $result;
         return $this->query;
@@ -50,10 +51,28 @@ class QueryBuilder
         }
         $columns = implode(",", $columns);
         $values = implode(",", $values);
-        
+
         $this->type = "insert";
         $this->query = "INSERT INTO {$this->table} (" . $columns . ") VALUES (" . $values . ")";
         $this->data["inserters"] = $results;
+        return $this;
+    }
+
+    public function update(array $data)
+    {
+        # UPDATE users SET column = value;
+
+        $setters = [];
+        $results = [];
+
+        foreach ($data as $key => $value) {
+            $setters[] = "{$key} = :{$key}";
+            $results[":{$key}"] = $value;
+        }
+                
+        $this->type = "update";
+        $this->query = "UPDATE {$this->table} SET " . implode(',', $setters);
+        $this->data['updaters'] = $results;
         return $this;
     }
 
