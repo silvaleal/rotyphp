@@ -1,4 +1,4 @@
-# 🐘 RotyPHP
+# RotyPHP
 
 ![Packagist Version](https://img.shields.io/packagist/v/silvaleal/rotyphp?style=for-the-badge)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/silvaleal/rotyphp?style=for-the-badge)
