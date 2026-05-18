@@ -10,7 +10,7 @@ class Database {
 
     public static function conn() {
         try {
-            self::$conn = new PDO('sqlite:'.self::$connector);
+            self::$conn = new PDO('sqlite:'.self::getConnector());
             self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return self::$conn;
         } catch (\Throwable $e) {
