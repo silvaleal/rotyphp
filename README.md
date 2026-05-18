@@ -15,7 +15,7 @@ composer require silvaleal/rotyphp
 
 ## Configuração
 
-Antes de utilizar o RotyPHP para consultar o banco de dados, você precisa configurar o caminho para o seu arquivo SQLite. Utilize o método `setConnector` da classe `Database` logo no início da sua aplicação:
+Antes de utilizar o RotyPHP, é obrigatório configurar o método `setConnector` da classe `Database` logo no início da sua aplicação:
 
 ```php
 <?php 
@@ -25,24 +25,24 @@ require 'vendor/autoload.php';
 use RotyPHP\Database;
 use RotyPHP\Model;
 
-// Configure o caminho absoluto ou relativo para o arquivo do banco de dados SQLite
-Database::setConnector(__DIR__ . '/database.db');
+Database::setConnector(__DIR__."/../database.db");
 
-// Instancie o Model passando o nome da tabela
-$user = new Model('users');
+class User extends SQLiteModel {
+    public ?string $table = "users";
+}
 
-// Realize suas consultas
-$user->select();
-$resultados = $user->get();
+$model = new User();
 
-print_r($resultados);
+$a = $model->select()->get();
+
+print_r($a);
 ```
 
 ## Documentação
 
 Leia a nossa documentação em [/doc](/doc/).
 
-## 📝 To-Do List (Tarefas Futuras)
+## To-Do List (Tarefas Futuras)
 
 - [x] Conexão com SQLite via PDO
 - [x] Método `select()`
@@ -54,5 +54,3 @@ Leia a nossa documentação em [/doc](/doc/).
 - [ ] Melhorar `where()` (suporte a `>`, `<`, `LIKE`, etc.)
 - [ ] Implementar suporte a `limit()` e `orderBy()`
 - [ ] Tratamento avançado de exceções
-
-**Desenvolvido por:** [silvaleal](https://silvaleal.dev)
