@@ -8,41 +8,50 @@ class Migration
     public string $column;
     protected array $data = [];
 
+    protected ?string $_varchar;
+    protected ?string $_text;
+    protected ?string $_int;
+    protected ?string $_bigint;
+    protected ?string $_float;
+    protected ?string $_bool;
+    protected ?string $_primKey;
+    protected ?string $_autoinc;
+
 
     public function varchar(string $column, int $length)
     {
-        $this->content($column, 'VARCHAR', $length);
+        $this->content($column, $this->_varchar, $length);
         return $this;
     }
 
 
     public function text(string $column)
     {
-        $this->content($column, 'TEXT');
+        $this->content($column, $this->_text);
         return $this;
     }
 
     public function int(string $column)
     {
-        $this->content($column, 'INT');
+        $this->content($column, $this->_int);
         return $this;
     }
 
     public function bigint(string $column)
     {
-        $this->content($column, 'BIGINT');
+        $this->content($column, $this->_bigint);
         return $this;
     }
 
     public function float(string $column)
     {
-        $this->content($column, 'FLOAT');
+        $this->content($column, $this->_float);
         return $this;
     }
 
     public function bool(string $column)
     {
-        $this->content($column, 'BOOL');
+        $this->content($column, $this->_bool);
         return $this;
     }
 
@@ -54,12 +63,12 @@ class Migration
 
     public function primKey()
     {
-        $this->data[$this->column] .= " PRIMARY KEY";
+        $this->data[$this->column] .= " {$this->_primKey}";
         return $this;
     }
     public function autoinc()
     {
-        $this->data[$this->column] .= " AUTOINCREMENT";
+        $this->data[$this->column] .= " {$this->_autoinc}";
         return $this;
     }
 

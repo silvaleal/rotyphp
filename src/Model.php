@@ -5,12 +5,11 @@ namespace RotyPHP;
 use PDO;
 
 class Model extends QueryBuilder {
-    protected string $table;
+    public ?string $table;
     protected array $data = [];
     protected PDO $pdo;
 
-    public function __construct(string $table) {
-        $this->table = $table;
+    public function __construct() {
         $this->pdo = Database::conn();
     }
 

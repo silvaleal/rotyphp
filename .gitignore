@@ -1,4 +1,5 @@
 composer.lock
-vendor/
 .env
 database.db
+vendor/
+tests/

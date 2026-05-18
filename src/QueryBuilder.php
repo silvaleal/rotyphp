@@ -8,8 +8,8 @@ class QueryBuilder
     protected string $type = '';
     protected array $data = [];
     protected array $wheres = [];
-    protected ?int $limit = null;
-    protected string $table = '';
+    protected ?int $limit;
+    protected ?string $table;
     protected string $columns = '*';
 
     public function builder()
@@ -99,9 +99,13 @@ class QueryBuilder
         return $this;
     }
 
-    public function where(string $column, string $value)
+    public function where(string $column, int|string $value)
     {
         $this->wheres[$column] = $value;
         return $this;
+    }
+
+    public function getQuery() {
+        return $this->query;
     }
 }
