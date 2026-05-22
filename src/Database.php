@@ -5,14 +5,18 @@ namespace RotyPHP;
 use PDO;
 
 class Database {
-    private static PDO $conn;
+    private static ?PDO $pdo;
     private static ?string $connector;
 
     public static function conn() {
         try {
-            self::$conn = new PDO('sqlite:'.self::getConnector());
-            self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return self::$conn;
+            
+            if (isset(self::$connector)) {
+                self::$pdo = new PDO('sqlite:'.self::getConnector());
+                self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
+            }
+
+            return self::$pdo ?? null;
         } catch (\Throwable $e) {
             return $e->getMessage();
         }

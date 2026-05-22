@@ -108,4 +108,8 @@ class QueryBuilder
     public function getQuery() {
         return $this->query;
     }
+
+    public function setTable($table) {
+        $this->table = $table;
+    }
 }
