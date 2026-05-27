@@ -53,4 +53,5 @@ Leia a nossa documentação em [/doc](/doc/).
 - [x] Implementar método `delete()`
 - [ ] Melhorar `where()` (suporte a `>`, `<`, `LIKE`, etc.)
 - [ ] Implementar suporte a `limit()` e `orderBy()`
-- [ ] Tratamento avançado de exceções
+- [ ] Implementar método `unique()`
+- [ ] Implementar método `datetime()`
