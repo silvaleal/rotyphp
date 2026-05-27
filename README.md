@@ -13,34 +13,8 @@
 composer require silvaleal/rotyphp
 ```
 
-## Configuração
-
-Antes de utilizar o RotyPHP, é obrigatório configurar o método `setConnector` da classe `Database` logo no início da sua aplicação:
-
-```php
-<?php 
-
-require 'vendor/autoload.php';
-
-use RotyPHP\Database;
-use RotyPHP\Model;
-
-Database::setConnector(__DIR__."/../database.db");
-
-class User extends SQLiteModel {
-    public ?string $table = "users";
-}
-
-$model = new User();
-
-$a = $model->select()->get();
-
-print_r($a);
-```
-
 ## Documentação
-
-Leia a nossa documentação em [/doc](/doc/).
+Aprenda a usar o RotyPHP lendo a nossa documentação clicando [aqui](https://rotyphp.silvaleal.dev/).
 
 ## To-Do List (Tarefas Futuras)
 
