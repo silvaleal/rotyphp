@@ -18,14 +18,7 @@ Aprenda a usar o RotyPHP lendo a nossa documentação clicando [aqui](https://ro
 
 ## To-Do List (Tarefas Futuras)
 
-- [x] Conexão com SQLite via PDO
-- [x] Método `select()`
-- [x] Método `insert()` e `create()`
-- [x] Cláusula `where()` básica
-- [x] Retorno com `get()` e `first()`
-- [x] Implementar método `update()`
-- [x] Implementar método `delete()`
 - [ ] Melhorar `where()` (suporte a `>`, `<`, `LIKE`, etc.)
 - [ ] Implementar suporte a `limit()` e `orderBy()`
 - [x] Implementar método `unique()`
-- [ ] Implementar método `datetime()`
+- [x] Implementar método `datetime()`
