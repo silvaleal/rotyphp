@@ -27,5 +27,5 @@ Aprenda a usar o RotyPHP lendo a nossa documentação clicando [aqui](https://ro
 - [x] Implementar método `delete()`
 - [ ] Melhorar `where()` (suporte a `>`, `<`, `LIKE`, etc.)
 - [ ] Implementar suporte a `limit()` e `orderBy()`
-- [ ] Implementar método `unique()`
+- [x] Implementar método `unique()`
 - [ ] Implementar método `datetime()`

@@ -14,6 +14,7 @@ class Migration
     protected ?string $_bigint;
     protected ?string $_float;
     protected ?string $_bool;
+    protected ?string $_datetime;
     protected ?string $_primKey;
     protected ?string $_autoinc;
 
@@ -54,10 +55,20 @@ class Migration
         $this->content($column, $this->_bool);
         return $this;
     }
+    public function datetime(string $column) {
+        $this->content($column, $this->_datetime);
+        return $this;
+    }
 
     public function default(string $value)
     {
         $this->data[$this->column] .= " DEFAULT '{$value}'";
+        return $this;
+    }
+
+    public function defaultRaw(string $expression)
+    {
+        $this->data[$this->column] .= " DEFAULT " . trim($expression);
         return $this;
     }
 
@@ -69,6 +80,11 @@ class Migration
     public function autoinc()
     {
         $this->data[$this->column] .= " {$this->_autoinc}";
+        return $this;
+    }
+
+    public function unique() {
+        $this->data[$this->column] .= " UNIQUE";
         return $this;
     }
 
