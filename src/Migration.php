@@ -25,7 +25,6 @@ class Migration
         return $this;
     }
 
-
     public function text(string $column)
     {
         $this->content($column, $this->_text);
@@ -85,6 +84,11 @@ class Migration
 
     public function unique() {
         $this->data[$this->column] .= " UNIQUE";
+        return $this;
+    }
+
+    public function foreignkey(string $column, string $table, string $key) { # FOREIGN KEY
+        $this->data[$this->column] .= ", FOREIGN KEY ($column) REFERENCES $table ($key)";
         return $this;
     }
 

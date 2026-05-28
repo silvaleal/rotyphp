@@ -43,6 +43,11 @@ class QueryBuilder
         return $this;
     }
 
+    public function join(string $table, string $key, string $field) {
+        $this->query .= " JOIN {$table} ON {$key} = {$field}";
+        return $this;
+    }
+
     public function insert(array $data)
     {
         $columns = [];
