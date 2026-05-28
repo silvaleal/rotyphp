@@ -22,3 +22,4 @@ Aprenda a usar o RotyPHP lendo a nossa documentação clicando [aqui](https://ro
 - [ ] Implementar suporte a `limit()` e `orderBy()`
 - [x] Implementar método `unique()`
 - [x] Implementar método `datetime()`
+- [ ] Suporte para MySQL
