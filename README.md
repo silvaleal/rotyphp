@@ -24,3 +24,4 @@ Aprenda a usar o RotyPHP lendo a nossa documentação clicando [aqui](https://ro
 - [x] Implementar método `datetime()`
 - [ ] Suporte para MySQL
 - [ ] Suporte de datas no `where()`
+- [ ] Trabalhar com Orders ASC e DESC
