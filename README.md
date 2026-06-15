@@ -18,10 +18,10 @@ Aprenda a usar o RotyPHP lendo a nossa documentação clicando [aqui](https://ro
 
 ## To-Do List (Tarefas Futuras)
 
-- [ ] Melhorar `where()` (suporte a `>`, `<`, `LIKE`, etc.)
-- [ ] Implementar suporte a `limit()` e `orderBy()`
+- [X] Melhorar `where()` (suporte a `>`, `<`, `LIKE`, etc.)
+- [ ] Implementar suporte a `limit()`
 - [x] Implementar método `unique()`
 - [x] Implementar método `datetime()`
 - [ ] Suporte para MySQL
 - [ ] Suporte de datas no `where()`
-- [ ] Trabalhar com Orders ASC e DESC
+- [X] Trabalhar com Orders ASC e DESC
