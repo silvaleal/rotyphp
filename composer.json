@@ -2,7 +2,7 @@
     "name": "silvaleal/rotyphp",
     "license": "MIT",
     "description": "Micro-ORM para facilitar as interações com bancos de dados SQLite.",
-    "version": "0.1",
+    "version": "0.1.1",
     "autoload": {
         "psr-4": {
             "RotyPHP\\": "src/"
@@ -16,6 +16,6 @@
     ],
     "require": {
         "php": "^8.0",
-        "silvaleal/rotyquery": "^0.0.3"
+        "silvaleal/rotyquery": "^0.0.5"
     }
 }
