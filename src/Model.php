@@ -15,8 +15,9 @@ class Model extends ModelBuilder
     public function __construct()
     {
         try {
-            $result = $this->pdo = Database::conn();
-            if (!$result) {
+            $this->pdo = RotyDatabase::conn();
+
+            if (!$this->pdo) {
                 throw new Exception("Invalid database config.");
             }
         } catch (Exception $e) {

@@ -2,29 +2,31 @@
 
 namespace RotyPHP;
 
+use Exception;
 use PDO;
+use RotyPHP\abstracts\Driver;
 
-class Database {
+class RotyDatabase {
     private static ?PDO $pdo;
-    private static ?string $connector;
+    private static Driver $connector;
 
     public static function conn() {
         try {
             
             if (isset(self::$connector)) {
-                self::$pdo = new PDO('sqlite:'.self::getConnector());
+                self::$pdo = self::getConnector()->getPDO();
                 self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
             }
 
             return self::$pdo ?? null;
         } catch (\Throwable $e) {
-            return $e->getMessage();
+            throw new Exception($e->getMessage());
         }
     }
 
-    public static function setConnector(string $path) {
+    public static function setConnector(Driver $driver) {
         try {
-            self::$connector = $path;
+            self::$connector = $driver;
             return true;
         } catch (\Throwable $e) {
             return $e->getMessage();
