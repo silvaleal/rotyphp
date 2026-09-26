@@ -16,6 +16,6 @@
     ],
     "require": {
         "php": "^8.0",
-        "silvaleal/rotyquery": "^0.0.5"
+        "silvaleal/rotyquery": "^0.0.7"
     }
 }

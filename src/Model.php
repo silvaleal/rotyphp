@@ -4,9 +4,9 @@ namespace RotyPHP;
 
 use Exception;
 use PDO;
-use RotyQuery\ModelBuilder;
+use RotyQuery\ModelBase;
 
-class Model extends ModelBuilder
+class Model extends ModelBase
 {
     public ?string $table;
     protected array $data = [];
@@ -57,7 +57,7 @@ class Model extends ModelBuilder
         return $result;
     }
 
-    public function where(string $column, int|string $value, string $symbol="=")
+    public function where(string $column, int|string $value, string $symbol = "=")
     {
         $this->q_where($column, $value, $symbol);
         return $this;
@@ -69,9 +69,15 @@ class Model extends ModelBuilder
         return $this;
     }
 
-    public function order($column, $order='ASC')
+    public function order(string $column, string $order = 'ASC')
     {
         $this->q_order($column, $order);
+        return $this;
+    }
+
+    public function limit(int $limit)
+    {
+        $this->q_limit($limit);
         return $this;
     }
 
