@@ -19,5 +19,5 @@ Aprenda a usar o RotyPHP lendo a nossa documentação clicando [aqui](https://ro
 ## To-Do List (Tarefas Futuras)
 
 - [x] Implementar suporte a `limit()`
-- [ ] Suporte para MySQL
+- [x] Suporte para MySQL
 - [ ] Suporte de datas no `where()`

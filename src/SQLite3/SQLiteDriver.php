@@ -3,7 +3,7 @@
 namespace RotyPHP\SQLite3;
 
 use PDO;
-use RotyPHP\abstracts\Driver;
+use RotyPHP\Driver;
 
 class SQLiteDriver extends Driver
 {

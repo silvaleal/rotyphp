@@ -4,7 +4,6 @@ namespace RotyPHP;
 
 use Exception;
 use PDO;
-use RotyPHP\abstracts\Driver;
 
 class RotyDatabase {
     private static ?PDO $pdo;
