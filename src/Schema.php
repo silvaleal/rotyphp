@@ -2,7 +2,7 @@
 
 namespace RotyPHP;
 
-class Migration
+class Schema
 {
     public string $table;
     public string $column;

@@ -2,9 +2,9 @@
 
 namespace RotyPHP\SQLite3;
 
-use RotyPHP\Migration;
+use RotyPHP\Schema;
 
-class SQLiteMigration extends Migration {
+class SQLiteSchema extends Schema {
     protected ?string $_varchar = "VARCHAR";
     protected ?string $_text = "TEXT";
     protected ?string $_int = "INTEGER";

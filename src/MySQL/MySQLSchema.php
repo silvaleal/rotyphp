@@ -2,9 +2,9 @@
 
 namespace RotyPHP\MySQL;
 
-use RotyPHP\Migration;
+use RotyPHP\Schema;
 
-class MySQLMigration extends Migration {
+class MySQLSchema extends Schema {
     protected ?string $_varchar = "VARCHAR";
     protected ?string $_text = "TEXT";
     protected ?string $_int = "INTEGER";
@@ -13,5 +13,5 @@ class MySQLMigration extends Migration {
     protected ?string $_bool = "BOOLEAN";
     protected ?string $_datetime = "DATETIME";
     protected ?string $_primKey = "PRIMARY KEY";
-    protected ?string $_autoinc = "AUTOINCREMENT";
+    protected ?string $_autoinc = "AUTO_INCREMENT";
 }
