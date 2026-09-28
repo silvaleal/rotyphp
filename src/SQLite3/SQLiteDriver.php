@@ -7,17 +7,16 @@ use RotyPHP\Driver;
 
 class SQLiteDriver extends Driver
 {
-    public string $name = 'sqlite';
-    public string $code;
+    protected static $code;
 
-    public function __construct(string $code)
+    public static function define(string $code)
     {
-        $this->code = $code;
+        self::$code = $code;
     }
 
-    public function getPDO(): PDO
+    public static function getPDO(): PDO
     {
-        return new PDO("$this->name:$this->code");
+        return new PDO("sqlite:".self::$code);
     }
 
 }

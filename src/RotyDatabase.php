@@ -7,13 +7,13 @@ use PDO;
 
 class RotyDatabase {
     private static ?PDO $pdo;
-    private static Driver $connector;
+    private static PDO $connector;
 
     public static function conn() {
         try {
             
             if (isset(self::$connector)) {
-                self::$pdo = self::getConnector()->getPDO();
+                self::$pdo = self::getConnector();
                 self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
             }
 
@@ -23,7 +23,7 @@ class RotyDatabase {
         }
     }
 
-    public static function setConnector(Driver $driver) {
+    public static function setConnector(PDO|null $driver) {
         try {
             self::$connector = $driver;
             return true;

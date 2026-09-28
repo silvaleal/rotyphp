@@ -7,22 +7,26 @@ use RotyPHP\Driver;
 
 class MySQLDriver extends Driver
 {
-    public string $host;
-    public string $database;
-    public string $username;
-    public string $password;
+    public static string $host;
+    public static string $database;
+    public static string $username;
+    public static string $password;
 
-    public function __construct(string $host, string $username, string $password, string $database)
-        {
-            $this->host = $host;
-            $this->username = $username;
-            $this->password = $password;
-            $this->database = $database;
-        }
+    public static function define(
+        string $host,
+        string $username,
+        string $password,
+        string $database
+    ) {
+        self::$host = $host;
+        self::$username = $username;
+        self::$password = $password;
+        self::$database = $database;
+    }
 
-    public function getPDO(): PDO
+    public static function getPDO(): PDO
     {
-        return new PDO("mysql:host=$this->host;dbname=$this->database", $this->username, $this->password);
+        return new PDO("mysql:host=" . self::$host . ";dbname=" . self::$database, self::$username, self::$password);
     }
 
 }

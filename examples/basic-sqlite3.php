@@ -5,12 +5,16 @@ require __DIR__."/../vendor/autoload.php";
 use RotyPHP\Model;
 use RotyPHP\RotyDatabase;
 
+use RotyPHP\RotyDriver;
 use RotyPHP\SQLite3\SQLiteDriver;
  
 # Obrigatório
 # É com este código que o rotyphp identifica qual banco de dados deseja usar
-$driver = new SQLiteDriver(__DIR__."/../database.db");
-RotyDatabase::setConnector($driver);
+RotyDriver::setName("sqlite");
+
+SQLiteDriver::define(__DIR__."/../database.db");
+
+RotyDatabase::setConnector(RotyDriver::getDriver());
 
 # Criando nosso Model.
 class User extends Model {

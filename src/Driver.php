@@ -7,7 +7,7 @@ use PDO;
 
 abstract class Driver
 {
-    public function getPDO(): PDO
+    public static function getPDO(): PDO
     {
         throw new Exception("PDO not implemented.");
     }

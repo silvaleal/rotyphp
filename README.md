@@ -3,7 +3,7 @@
 ![Packagist Version](https://img.shields.io/packagist/v/silvaleal/rotyphp?style=for-the-badge)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/silvaleal/rotyphp?style=for-the-badge)
 
-**RotyPHP** é um micro-ORM e Query Builder minimalista, simples e eficiente, construído em PHP para facilitar as interações com bancos de dados SQLite usando PDO. O foco é fornecer uma sintaxe limpa e fluente, abstraindo queries SQL para operações rotineiras.
+**RotyPHP** é um micro-ORM e Query Builder minimalista, simples e eficiente, construído em PHP para facilitar as interações com bancos de dados usando PDO. O foco é fornecer uma sintaxe limpa e fluente, abstraindo queries SQL para operações rotineiras.
 
 > **Aviso:** Este projeto ainda está em fase de desenvolvimento (ver *To-Do List*). Não é recomendado para uso em produção crítica no momento.
 
