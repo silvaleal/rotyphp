@@ -18,95 +18,104 @@ class Schema
     protected ?string $_primKey;
     protected ?string $_autoinc;
 
-
     public function varchar(string $column, int $length)
     {
         $this->content($column, $this->_varchar, $length);
+
         return $this;
     }
 
     public function text(string $column)
     {
         $this->content($column, $this->_text);
+
         return $this;
     }
 
     public function int(string $column)
     {
         $this->content($column, $this->_int);
+
         return $this;
     }
 
     public function bigint(string $column)
     {
         $this->content($column, $this->_bigint);
+
         return $this;
     }
 
     public function float(string $column)
     {
         $this->content($column, $this->_float);
+
         return $this;
     }
 
     public function bool(string $column)
     {
         $this->content($column, $this->_bool);
+
         return $this;
     }
-    public function datetime(string $column) {
+
+    public function datetime(string $column)
+    {
         $this->content($column, $this->_datetime);
+
         return $this;
     }
 
     public function default(string $value)
     {
         $this->data[$this->column] .= " DEFAULT '{$value}'";
+
         return $this;
     }
 
     public function defaultRaw(string $expression)
     {
-        $this->data[$this->column] .= " DEFAULT " . trim($expression);
+        $this->data[$this->column] .= ' DEFAULT '.trim($expression);
+
         return $this;
     }
 
     public function primKey()
     {
         $this->data[$this->column] .= " {$this->_primKey}";
+
         return $this;
     }
+
     public function autoinc()
     {
         $this->data[$this->column] .= " {$this->_autoinc}";
+
         return $this;
     }
 
-    public function unique() {
-        $this->data[$this->column] .= " UNIQUE";
-        return $this;
-    }
-
-    public function foreignkey(string $column, string $table, string $key) { # FOREIGN KEY
-        $this->data[$this->column] .= ", FOREIGN KEY ($column) REFERENCES $table ($key)";
-        return $this;
-    }
-
-    private function content(string $column, string $value, ?int $size = null)
+    public function unique()
     {
+        $this->data[$this->column] .= ' UNIQUE';
 
-        $this->data[$column] = $size ? "$value($size)" : $value;
-        $this->column = $column;
+        return $this;
+    }
+
+    public function foreignkey(string $column, string $table, string $key) // FOREIGN KEY
+    {$this->data[$this->column] .= ", FOREIGN KEY ({$column}) REFERENCES {$table} ({$key})";
+
+        return $this;
     }
 
     public function build()
     {
-        $query = "CREATE TABLE IF NOT EXISTS $this->table (!columns!)";
+        $query = "CREATE TABLE IF NOT EXISTS {$this->table} (!columns!)";
 
         $columns = [];
 
         foreach ($this->data as $key => $column) {
-            $columns[] = "$key $column";
+            $columns[] = "{$key} {$column}";
         }
 
         $columns = implode(', ', $columns);
@@ -114,4 +123,9 @@ class Schema
         return str_replace('!columns!', $columns, $query);
     }
 
+    private function content(string $column, string $value, ?int $size = null)
+    {
+        $this->data[$column] = $size ? "{$value}({$size})" : $value;
+        $this->column = $column;
+    }
 }

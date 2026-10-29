@@ -1,38 +1,39 @@
-<?php 
+<?php
 
 namespace RotyPHP;
 
-use Exception;
-use PDO;
+class RotyDatabase
+{
+    private static ?\PDO $pdo;
+    private static \PDO $connector;
 
-class RotyDatabase {
-    private static ?PDO $pdo;
-    private static PDO $connector;
-
-    public static function conn() {
+    public static function conn()
+    {
         try {
-            
             if (isset(self::$connector)) {
                 self::$pdo = self::getConnector();
-                self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
+                self::$pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             }
 
             return self::$pdo ?? null;
         } catch (\Throwable $e) {
-            throw new Exception($e->getMessage());
+            throw new \Exception($e->getMessage());
         }
     }
 
-    public static function setConnector(PDO|null $driver) {
+    public static function setConnector(?\PDO $driver)
+    {
         try {
             self::$connector = $driver;
+
             return true;
         } catch (\Throwable $e) {
             return $e->getMessage();
         }
     }
 
-    public static function getConnector() {
+    public static function getConnector()
+    {
         return self::$connector;
     }
 }

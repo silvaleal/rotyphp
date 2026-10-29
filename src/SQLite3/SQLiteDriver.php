@@ -2,7 +2,6 @@
 
 namespace RotyPHP\SQLite3;
 
-use PDO;
 use RotyPHP\Driver;
 
 class SQLiteDriver extends Driver
@@ -14,9 +13,8 @@ class SQLiteDriver extends Driver
         self::$code = $code;
     }
 
-    public static function getPDO(): PDO
+    public static function getPDO(): \PDO
     {
-        return new PDO("sqlite:".self::$code);
+        return new \PDO('sqlite:'.self::$code);
     }
-
 }

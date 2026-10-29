@@ -2,15 +2,13 @@
 
 namespace RotyPHP;
 
-use Exception;
-use PDO;
 use RotyQuery\ModelBase;
 
 class Model extends ModelBase
 {
     public ?string $table;
     protected array $data = [];
-    protected ?PDO $pdo;
+    protected ?\PDO $pdo;
 
     public function __construct()
     {
@@ -18,10 +16,10 @@ class Model extends ModelBase
             $this->pdo = RotyDatabase::conn();
 
             if (!$this->pdo) {
-                throw new Exception("Invalid database config.");
+                throw new \Exception('Invalid database config.');
             }
-        } catch (Exception $e) {
-            throw new Exception("Error connecting to database: " . $e->getMessage());
+        } catch (\Exception $e) {
+            throw new \Exception('Error connecting to database: '.$e->getMessage());
         }
     }
 
@@ -30,9 +28,8 @@ class Model extends ModelBase
         $this->q_insert($data);
 
         $stmt = $this->pdo->prepare($this->query);
-        $result = $stmt->execute($this->data["inserters"]);
 
-        return $result;
+        return $stmt->execute($this->data['inserters']);
     }
 
     public function edit(array $data)
@@ -41,9 +38,8 @@ class Model extends ModelBase
         $this->q_builder();
 
         $stmt = $this->pdo->prepare($this->query);
-        $result = $stmt->execute($this->data["updaters"]);
 
-        return $result;
+        return $stmt->execute($this->data['updaters']);
     }
 
     public function delete(array $data)
@@ -52,32 +48,35 @@ class Model extends ModelBase
         $this->q_builder();
 
         $stmt = $this->pdo->prepare($this->query);
-        $result = $stmt->execute($this->data["deletories"]);
 
-        return $result;
+        return $stmt->execute($this->data['deletories']);
     }
 
-    public function where(string $column, int|string $value, string $symbol = "=")
+    public function where(string $column, int|string $value, string $symbol = '=')
     {
         $this->q_where($column, $value, $symbol);
+
         return $this;
     }
 
     public function join(string $table, string $key, string $field)
     {
         $this->q_join($table, $key, $field);
+
         return $this;
     }
 
     public function order(string $column, string $order = 'ASC')
     {
         $this->q_order($column, $order);
+
         return $this;
     }
 
     public function limit(int $limit)
     {
         $this->q_limit($limit);
+
         return $this;
     }
 
@@ -90,20 +89,20 @@ class Model extends ModelBase
 
         $stmt = $this->pdo->prepare($this->query);
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function getFirst(string $columns = '*')
     {
-        if ($this->query === '' || stripos(ltrim($this->query), 'SELECT') !== 0) {
+        if ('' === $this->query || 0 !== stripos(ltrim($this->query), 'SELECT')) {
             $this->q_select($columns);
         }
         $this->q_builder();
 
         $stmt = $this->pdo->prepare($this->query);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result;
+
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 }

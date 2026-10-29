@@ -13,6 +13,7 @@ class RotyDriver
     {
         self::$name = $name;
     }
+
     public static function getName()
     {
         return self::$name;
@@ -23,14 +24,17 @@ class RotyDriver
         switch (self::$name) {
             case 'sqlite':
                 $database = SQLiteDriver::getPDO();
+
                 break;
 
             case 'mysql':
                 $database = MySQLDriver::getPDO();
+
                 break;
 
             default:
                 $database = null;
+
                 break;
         }
 

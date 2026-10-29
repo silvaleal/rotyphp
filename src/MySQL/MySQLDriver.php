@@ -2,7 +2,6 @@
 
 namespace RotyPHP\MySQL;
 
-use PDO;
 use RotyPHP\Driver;
 
 class MySQLDriver extends Driver
@@ -24,9 +23,19 @@ class MySQLDriver extends Driver
         self::$database = $database;
     }
 
-    public static function getPDO(): PDO
+    public static function getPDO(): \PDO
     {
-        return new PDO("mysql:host=" . self::$host . ";dbname=" . self::$database, self::$username, self::$password);
-    }
+        $dsn = 'mysql:host='.self::$host.';dbname='.self::$database;
 
+        return new \PDO(
+            $dsn,
+            self::$username,
+            self::$password,
+            [
+                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+            ]
+        );
+    }
 }
