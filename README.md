@@ -3,21 +3,21 @@
 ![Packagist Version](https://img.shields.io/packagist/v/silvaleal/rotyphp?style=for-the-badge)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/silvaleal/rotyphp?style=for-the-badge)
 
-**RotyPHP** é um micro-ORM e Query Builder minimalista, simples e eficiente, construído em PHP para facilitar as interações com bancos de dados usando PDO. O foco é fornecer uma sintaxe limpa e fluente, abstraindo queries SQL para operações rotineiras.
+**RotyPHP** is a minimalist, simple and efficient micro-ORM and Query Builder built in PHP to make database interactions with PDO easier. The focus is to provide a clean and fluent syntax, abstracting SQL queries for routine operations.
 
-> **Aviso:** Este projeto ainda está em fase de desenvolvimento (ver *To-Do List*). Não é recomendado para uso em produção crítica no momento.
+> **Warning:** This project is still under development (see *To-Do List*). It is not recommended for critical production use at the moment.
 
-## Instalação
+## Installation
 
 ```bash
 composer require silvaleal/rotyphp
 ```
 
-## Documentação
-Aprenda a usar o RotyPHP lendo a nossa documentação clicando [aqui](https://rotyphp.silvaleal.dev/).
+## Documentation
+Learn how to use RotyPHP by reading our documentation [here](https://rotyphp.silvaleal.dev/).
 
-## To-Do List (Tarefas Futuras)
+## To-Do List (Future Tasks)
 
-- [x] Implementar suporte a `limit()`
-- [x] Suporte para MySQL
-- [ ] Suporte de datas no `where()`
+- [x] Implement support for `limit()`
+- [x] MySQL support
+- [ ] Date support in `where()`

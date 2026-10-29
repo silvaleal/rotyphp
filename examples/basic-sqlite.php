@@ -21,6 +21,7 @@ class User extends Model
     public ?string $table = 'users';
 }
 
+// Código
 $user = new User();
 
 $user->where('id', 1);

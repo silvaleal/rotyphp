@@ -1,8 +1,8 @@
 {
     "name": "silvaleal/rotyphp",
     "license": "MIT",
-    "description": "Micro-ORM para facilitar as interações com bancos de dados.",
-    "version": "0.1.6",
+    "description": "is a minimalist, simple and efficient micro-ORM and Query Builder built in PHP",
+    "version": "0.1.7",
     "autoload": {
         "psr-4": {
             "RotyPHP\\": "src/"
@@ -21,7 +21,7 @@
     ],
     "require": {
         "php": "^8.0",
-        "silvaleal/rotyquery": "^0.0.7"
+        "silvaleal/rotyquery": "0.0.9"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.95",

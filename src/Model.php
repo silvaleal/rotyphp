@@ -28,8 +28,8 @@ class Model extends ModelBase
         $this->q_insert($data);
 
         $stmt = $this->pdo->prepare($this->query);
-
-        return $stmt->execute($this->data['inserters']);
+        $stmt->execute($this->data['inserters']);
+        return $this->pdo->lastInsertId();
     }
 
     public function edit(array $data)
@@ -85,10 +85,10 @@ class Model extends ModelBase
         if (!$this->type) {
             $this->q_select($columns);
         }
-        $this->q_builder();
+        $query = $this->q_builder();
 
-        $stmt = $this->pdo->prepare($this->query);
-        $stmt->execute();
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute($this->data['wheres'] ?? []);
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
@@ -98,10 +98,10 @@ class Model extends ModelBase
         if ('' === $this->query || 0 !== stripos(ltrim($this->query), 'SELECT')) {
             $this->q_select($columns);
         }
-        $this->q_builder();
+        $query = $this->q_builder();
 
-        $stmt = $this->pdo->prepare($this->query);
-        $stmt->execute();
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute($this->data['wheres'] ?? []);
 
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
