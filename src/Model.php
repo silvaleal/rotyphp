@@ -13,7 +13,7 @@ class Model extends ModelBase
     public function __construct()
     {
         try {
-            $this->pdo = RotyDatabase::conn();
+            $this->pdo = RotyPHP::getConnector();
 
             if (!$this->pdo) {
                 throw new \Exception('Invalid database config.');
@@ -29,6 +29,7 @@ class Model extends ModelBase
 
         $stmt = $this->pdo->prepare($this->query);
         $stmt->execute($this->data['inserters']);
+
         return $this->pdo->lastInsertId();
     }
 
